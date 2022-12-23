@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { UpperPartComponent } from './upper-part/upper-part.component';
 import { LowerPartComponent } from './lower-part/lower-part.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,9 @@ import { LowerPartComponent } from './lower-part/lower-part.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
