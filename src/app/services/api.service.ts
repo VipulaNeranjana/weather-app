@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Weather } from '../models/weatherModel';
+import { Weather, WeatherFreeApi } from '../models/weatherModel';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,15 @@ export class ApiService {
       .set('X-RapidAPI-Key',environment.headers['X-RapidAPI-Key']),
       params : new HttpParams()
       .set('unitGroup', 'metric')
+    })
+  }
+  
+  getWeatherFromFreeApi(location : string) : Observable<WeatherFreeApi>{
+    return this.http.get<WeatherFreeApi>(environment.url2,{headers : new HttpHeaders()
+      .set('X-RapidAPI-Host',environment.headers2['X-RapidAPI-Host'])
+      .set('X-RapidAPI-Key',environment.headers2['X-RapidAPI-Key']),
+      params : new HttpParams()
+      .set('city',location)
     })
   }
 

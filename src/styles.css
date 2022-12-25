@@ -127,3 +127,20 @@ body {
     align-items: center;
     color: aliceblue;
 }
+
+.search {
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.search input {
+    background-color: rgb(174, 190, 209);
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    padding: 1em;
+    color: aliceblue;
+    font-size: 0.8em;
+    text-align: center;
+    text-decoration: none;
+}

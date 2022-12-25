@@ -1,12 +1,18 @@
+
 <div class="container" *ngIf="weatherDetail">
   <div class="upper-data">
-    <img src="https://www.thesundaily.my/binrepository/sun-pexels_2428951_20220615185259.jpg" alt="" *ngIf="weatherDetail?.currentConditions.temp > 15">
-    <img src="https://www.holborn.com/wp-content/uploads/2017/01/extreme-cold-landscape.jpg" alt="" *ngIf="weatherDetail?.currentConditions.temp <= 15">
-  
+    <img src="https://www.thesundaily.my/binrepository/sun-pexels_2428951_20220615185259.jpg" alt="" *ngIf="weatherDetail?.temp > 15">
+    <img src="https://www.holborn.com/wp-content/uploads/2017/01/extreme-cold-landscape.jpg" alt="" *ngIf="weatherDetail?.temp <= 15">
+    
     <div class="weather-data">
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
-      <div class="location">{{weatherDetail?.resolvedAddress}}</div>
-      <div class="temperature">{{ weatherDetail?.currentConditions.temp | number: '1.1-1'}}°C</div>
+      <div class="search">
+        <form>
+          <input type="text" placeholder="search city" #country (keyup.enter)="logCountry(country.value)" spellcheck="false">
+        </form>
+      </div>
+
+      <div class="location">{{location}}</div>
+      <div class="temperature">{{ weatherDetail?.temp | number: '1.1-1'}}°C</div>
     </div>
   </div>
   <div class="lower-data">
@@ -18,7 +24,7 @@
           <span>min</span>
         </div>
         <div class="info-block-value">
-          {{weatherDetail?.days[0].tempmin}}
+          {{weatherDetail?.min_temp}}
         </div>
       </div>
       <div class="info-block">
@@ -27,7 +33,7 @@
           <span>max</span>
         </div>
         <div class="info-block-value">
-          {{weatherDetail?.days[0].tempmax}}
+          {{weatherDetail?.max_temp}}
         </div>
       </div>
       <div class="info-block">
@@ -36,7 +42,7 @@
           <span>humidity</span>
         </div>
         <div class="info-block-value">
-          {{weatherDetail?.days[0].humidity}}%
+          {{weatherDetail?.humidity}}%
         </div>
       </div>
       <div class="info-block">
@@ -45,7 +51,7 @@
           <span>wind</span>
         </div>
         <div class="info-block-value">
-          {{weatherDetail?.days[0].windspeed}}kmph
+          {{weatherDetail?.wind_speed}}kmph
         </div>
       </div>
     </div>

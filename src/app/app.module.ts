@@ -7,6 +7,7 @@ import { UpperPartComponent } from './upper-part/upper-part.component';
 import { LowerPartComponent } from './lower-part/lower-part.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     
   ],
   providers: [],
