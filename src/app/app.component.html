@@ -1,11 +1,12 @@
-<div class="container">
+<div class="container" *ngIf="weatherDetail">
   <div class="upper-data">
-    <img src="https://www.thesundaily.my/binrepository/sun-pexels_2428951_20220615185259.jpg" alt="" *ngIf="14 > 13">
-    <img src="https://www.holborn.com/wp-content/uploads/2017/01/extreme-cold-landscape.jpg" alt="" *ngIf="14 <= 13">
+    <img src="https://www.thesundaily.my/binrepository/sun-pexels_2428951_20220615185259.jpg" alt="" *ngIf="weatherDetail?.currentConditions.temp > 15">
+    <img src="https://www.holborn.com/wp-content/uploads/2017/01/extreme-cold-landscape.jpg" alt="" *ngIf="weatherDetail?.currentConditions.temp <= 15">
   
     <div class="weather-data">
-      <div class="location">Veyangoda</div>
-      <div class="temperature">{{ 22.10 | number: '1.0-0'}}°C</div>
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+      <div class="location">{{weatherDetail?.resolvedAddress}}</div>
+      <div class="temperature">{{ weatherDetail?.currentConditions.temp | number: '1.1-1'}}°C</div>
     </div>
   </div>
   <div class="lower-data">
@@ -17,7 +18,7 @@
           <span>min</span>
         </div>
         <div class="info-block-value">
-          10°C
+          {{weatherDetail?.days[0].tempmin}}
         </div>
       </div>
       <div class="info-block">
@@ -26,7 +27,7 @@
           <span>max</span>
         </div>
         <div class="info-block-value">
-          20°C
+          {{weatherDetail?.days[0].tempmax}}
         </div>
       </div>
       <div class="info-block">
@@ -35,7 +36,7 @@
           <span>humidity</span>
         </div>
         <div class="info-block-value">
-          77%
+          {{weatherDetail?.days[0].humidity}}%
         </div>
       </div>
       <div class="info-block">
@@ -44,7 +45,7 @@
           <span>wind</span>
         </div>
         <div class="info-block-value">
-          55kmph
+          {{weatherDetail?.days[0].windspeed}}kmph
         </div>
       </div>
     </div>

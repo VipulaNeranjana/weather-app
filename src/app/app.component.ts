@@ -9,15 +9,17 @@ import { ApiService } from './services/api.service';
 export class AppComponent implements OnInit{
   constructor(private weatherService : ApiService) {}
   title = 'weatherApp';
+  weatherDetail : any;
   
   ngOnInit(): void {
     this.weatherService.getWeather('wellington')
     .pipe().subscribe({
       next: (response => {
+        this.weatherDetail = response;
         console.log(response);
       })
     });
 
-    // this.weatherService.geti('wellington');
+    // this.weatherService.getWeatherByFetch('wellington');
   }
 }
